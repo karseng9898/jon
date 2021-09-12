@@ -40,7 +40,7 @@ const Home = () => {
             className="rounded-md"
             src="/jon3.gif"
             alt="Jon"
-            height={494}
+            height={!open ? 0 : 494}
             width={658}
             layout="responsive"
           />
@@ -51,11 +51,11 @@ const Home = () => {
 
   return (
     <>
+      <Video />
       {open ? (
         <>
           <Sound url="jon.mpeg" playStatus={Sound.status.PLAYING} loop={true} />
           <VideoBackgound />
-          <Video />
         </>
       ) : (
         <Button />

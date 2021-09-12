@@ -38,7 +38,7 @@ const Home = () => {
         <div className="w-8/12">
           <Image
             className="rounded-md"
-            src="/jon.gif"
+            src="/jon3.gif"
             alt="Jon"
             height={494}
             width={658}

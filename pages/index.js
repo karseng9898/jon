@@ -1,24 +1,41 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Sound from 'react-sound';
+import VideoBackground from '../components/VideoBackground';
+import SmallSprites from '../components/SmallSprites';
+import FlippedSmallSprites from '../components/FlipedSmallSprites';
 
 const Home = () => {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState('');
+  const [show1, setShow1] = useState(false);
+  const [show2, setShow2] = useState(false);
+  const [show3, setShow3] = useState(false);
+  const [show4, setShow4] = useState(false);
+  const [show5, setShow5] = useState(false);
+  const [musicStopped, setMusicStopped] = useState(false);
 
   useEffect(() => {
-    setInterval(() => {
-      setValue('#' + Math.floor(Math.random() * 16777215).toString(16));
-    }, 500);
-    return () => {
-      clearInterval(value);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setTimeout(() => {
+      setShow1(true);
+    }, 300);
+    setTimeout(() => {
+      setShow2(true);
+    }, 1700);
+    setTimeout(() => {
+      setShow3(true);
+    }, 2400);
+    setTimeout(() => {
+      setShow4(true);
+    }, 1200);
+    setTimeout(() => {
+      setShow5(true);
+    }, 1800);
   }, []);
 
   const Button = () => (
-    <div className="flex justify-center items-center w-screen h-screen">
+    <div className="flex justify-center items-center w-screen h-screen z-50">
       <button
+        className="z-50"
         onClick={() => {
           setOpen(true);
         }}
@@ -28,15 +45,12 @@ const Home = () => {
     </div>
   );
 
-  const VideoBackgound = () => (
-    <div className="w-screen h-screen" style={{ backgroundColor: value }}></div>
-  );
-
-  const Video = () => {
+  const BigSprite = () => {
     return (
-      <div className="fixed top-1/2 transform -translate-y-1/2 w-full flex justify-center">
-        <div className="w-8/12">
+      <div className="fixed top-1/2 transform -translate-y-1/2 w-full flex justify-center z-30">
+        <div className="w-7/12">
           <Image
+            draggable={false}
             className="rounded-md"
             src="/jon3.gif"
             alt="Jon"
@@ -51,14 +65,28 @@ const Home = () => {
 
   return (
     <>
-      <Video />
+      <BigSprite />
+
+      <Sound
+        url="jon.mpeg"
+        playStatus={!open ? '' : Sound.status.PLAYING}
+        onFinish={() => setOpen(false)}
+      />
       {open ? (
         <>
-          <Sound url="jon.mpeg" playStatus={Sound.status.PLAYING} loop={true} />
-          <VideoBackgound />
+          <VideoBackground />
         </>
       ) : (
         <Button />
+      )}
+      {show1 && <SmallSprites className="top-40" open={open} size="small" />}
+      {show2 && <SmallSprites className="top-4" open={open} size="large" />}
+      {show3 && <SmallSprites className=" top-2/3" open={open} size="medium" />}
+      {show4 && (
+        <FlippedSmallSprites className=" top-3/4" open={open} size="medium" />
+      )}
+      {show5 && (
+        <FlippedSmallSprites className=" top-1/3" open={open} size="large" />
       )}
     </>
   );

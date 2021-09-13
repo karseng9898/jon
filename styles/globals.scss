@@ -58,3 +58,70 @@ button {
     opacity: 0.5;
   }
 }
+
+.lil-sprites {
+  animation: 3s linear infinite alternate slide;
+  -moz-animation: 3s linear infinite alternate slide;
+  -webkit-animation: 3s linear infinite alternate slide;
+  -o-animation: 3s linear infinite alternate slide;
+}
+
+@keyframes slide {
+  from {
+    margin-left: 100%;
+  }
+  to {
+    margin-left: -20%;
+  }
+}
+
+.lil-sprites-flipped {
+  animation: 3s linear infinite alternate flippedSlide;
+  -moz-animation: 3s linear infinite alternate flippedSlide;
+  -webkit-animation: 3s linear infinite alternate flippedSlide;
+  -o-animation: 3s linear infinite alternate flippedSlide;
+}
+
+@keyframes flippedSlide {
+  from {
+    margin-left: -20%;
+  }
+  to {
+    margin-left: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .lil-sprites {
+    animation: 1.5s linear infinite alternate slide;
+    -moz-animation: 1.5s linear infinite alternate slide;
+    -webkit-animation: 1.5s linear infinite alternate slide;
+    -o-animation: 1.5s linear infinite alternate slide;
+  }
+
+  @keyframes slide {
+    from {
+      margin-left: 100%;
+    }
+    to {
+      margin-left: -20%;
+    }
+  }
+
+  .lil-sprites-flipped {
+    animation: 1.5s linear infinite alternate flippedSlide;
+    -moz-animation: 1.5s linear infinite alternate flippedSlide;
+    -webkit-animation: 1.5s linear infinite alternate flippedSlide;
+    -o-animation: 1/5s linear infinite alternate flippedSlide;
+  }
+
+  @keyframes flippedSlide {
+    from {
+      margin-left: -20%;
+    }
+    to {
+      margin-left: 100%;
+    }
+  }
+}

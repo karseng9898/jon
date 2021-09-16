@@ -16,7 +16,7 @@ const Home = () => {
   const [musicStopped, setMusicStopped] = useState(false);
 
   const sound = new Howl({
-    src: ['jon.mpeg'],
+    src: ['music.mpeg'],
     onend: () => {
       setMusicStopped(true);
       setOpen(false);

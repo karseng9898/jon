@@ -21,6 +21,7 @@ const Home = () => {
       setMusicStopped(true);
       setOpen(false);
     },
+    preload: true,
   });
 
   useEffect(() => {

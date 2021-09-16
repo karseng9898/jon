@@ -76,8 +76,8 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Jonathan</title>
-        <link rel="icon" href="/sun.png" />
+        <title>Trust Me</title>
+        <link rel="icon" href="/orange.png" />
       </Head>
       <BigSprite />
 

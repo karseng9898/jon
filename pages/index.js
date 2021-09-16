@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import Sound from 'react-sound';
+import { Howl, Howler } from 'howler';
 import VideoBackground from '../components/VideoBackground';
 import SmallSprites from '../components/SmallSprites';
 import FlippedSmallSprites from '../components/FlipedSmallSprites';
@@ -13,6 +13,11 @@ const Home = () => {
   const [show4, setShow4] = useState(false);
   const [show5, setShow5] = useState(false);
   const [musicStopped, setMusicStopped] = useState(false);
+
+  const sound = new Howl({
+    src: ['test.mpeg'],
+    onend: () => setMusicStopped(true),
+  });
 
   useEffect(() => {
     setTimeout(() => {
@@ -37,6 +42,7 @@ const Home = () => {
       <button
         className="z-50"
         onClick={() => {
+          sound.play();
           setOpen(true);
         }}
       >
@@ -67,11 +73,6 @@ const Home = () => {
     <>
       <BigSprite />
 
-      <Sound
-        url="jon.mpeg"
-        playStatus={!open ? '' : Sound.status.PLAYING}
-        onFinish={() => setOpen(false)}
-      />
       {open ? (
         <>
           <VideoBackground />

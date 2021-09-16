@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Howl, Howler } from 'howler';
+import Head from 'next/head';
 import VideoBackground from '../components/VideoBackground';
 import SmallSprites from '../components/SmallSprites';
-import FlippedSmallSprites from '../components/FlipedSmallSprites';
+import Animated from 'react-mount-animation';
 
 const Home = () => {
   const [open, setOpen] = useState(false);
@@ -15,8 +16,11 @@ const Home = () => {
   const [musicStopped, setMusicStopped] = useState(false);
 
   const sound = new Howl({
-    src: ['test.mpeg'],
-    onend: () => setMusicStopped(true),
+    src: ['jon.mpeg'],
+    onend: () => {
+      setMusicStopped(true);
+      setOpen(false);
+    },
   });
 
   useEffect(() => {
@@ -28,10 +32,10 @@ const Home = () => {
     }, 1700);
     setTimeout(() => {
       setShow3(true);
-    }, 2400);
+    }, 3400);
     setTimeout(() => {
       setShow4(true);
-    }, 1200);
+    }, 1000);
     setTimeout(() => {
       setShow5(true);
     }, 1800);
@@ -71,6 +75,10 @@ const Home = () => {
 
   return (
     <>
+      <Head>
+        <title>Jonathan</title>
+        <link rel="icon" href="/sun.png" />
+      </Head>
       <BigSprite />
 
       {open ? (
@@ -78,17 +86,27 @@ const Home = () => {
           <VideoBackground />
         </>
       ) : (
-        <Button />
+        <>{!musicStopped && <Button />}</>
       )}
-      {show1 && <SmallSprites className="top-40" open={open} size="small" />}
-      {show2 && <SmallSprites className="top-4" open={open} size="large" />}
-      {show3 && <SmallSprites className=" top-2/3" open={open} size="medium" />}
+      {show1 && <SmallSprites className="s1" open={open} size="medium" />}
+      {show2 && <SmallSprites className="s2" open={open} size="large" />}
+      {show3 && <SmallSprites className="s3" open={open} size="small" />}
       {show4 && (
-        <FlippedSmallSprites className=" top-3/4" open={open} size="medium" />
+        <SmallSprites className="s4" open={open} size="medium" flipped />
       )}
       {show5 && (
-        <FlippedSmallSprites className=" top-1/3" open={open} size="large" />
+        <SmallSprites className="s5" open={open} size="medium" flipped />
       )}
+      <Animated.div //You can use any HTML element here
+        show={musicStopped}
+        className="fixed text-white text-4xl text-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        mountAnim={` 
+            0% {opacity: 0}
+            100% {opacity: 1}
+        `}
+      >
+        What are you waiting for?
+      </Animated.div>
     </>
   );
 };

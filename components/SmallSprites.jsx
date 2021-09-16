@@ -1,37 +1,26 @@
 import Image from 'next/image';
 
-const SmallSprites = ({ className, open, size }) => {
-  let styles = '';
-  switch (size) {
-    case 'large':
-      styles = 'w-72';
-      break;
-    case 'medium':
-      styles = 'w-60';
-      break;
-    case 'small':
-      styles = 'w-32';
-      break;
-    default:
-      break;
-  }
-
+const SmallSprites = ({ className, open, size, flipped }) => {
   return (
     <div
-      className={`fixed w-full top-0 left-0 z-10 ${className ? className : ''}`}
+      className={`fixed ${
+        className ? className : ''
+      } left-0 w-screen h-screen z-20 `}
     >
-      <div className={`lil-sprites ${styles}`}>
-        <div className="">
-          <Image
-            draggable={false}
-            className=" opacity-50"
-            src="/jon3.gif"
-            alt="jon"
-            height={!open ? 0 : 494}
-            width={658}
-            layout="responsive"
-          />
-        </div>
+      <div
+        className={`${
+          flipped ? 'lil-sprites-flipped' : 'lil-sprites'
+        } ${size} `}
+      >
+        <Image
+          draggable={false}
+          className=" opacity-50"
+          src={flipped ? '/jon4.gif' : '/jon3.gif'}
+          alt="jon"
+          height={!open ? 0 : 494}
+          width={658}
+          layout="responsive"
+        />
       </div>
     </div>
   );

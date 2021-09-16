@@ -2,7 +2,6 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background: black;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -66,12 +65,45 @@ button {
   -o-animation: 3s linear infinite alternate slide;
 }
 
+.large {
+  width: 40%;
+}
+
+.medium {
+  width: 30%;
+}
+
+.small {
+  width: 25%;
+}
+
+.s1 {
+  top: 10%;
+}
+
+.s2 {
+  top: 35%;
+}
+
+.s3 {
+  top: 50%;
+}
+
+.s4 {
+  top: 100%;
+  transform: translateY(-35%);
+}
+
+.s5 {
+  top: 20%;
+}
+
 @keyframes slide {
   from {
     margin-left: 100%;
   }
   to {
-    margin-left: -20%;
+    margin-left: -100%;
   }
 }
 
@@ -84,7 +116,7 @@ button {
 
 @keyframes flippedSlide {
   from {
-    margin-left: -20%;
+    margin-left: -100%;
   }
   to {
     margin-left: 100%;
@@ -93,6 +125,10 @@ button {
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
+  button {
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
   .lil-sprites {
     animation: 1.5s linear infinite alternate slide;
     -moz-animation: 1.5s linear infinite alternate slide;
@@ -105,7 +141,7 @@ button {
       margin-left: 100%;
     }
     to {
-      margin-left: -20%;
+      margin-left: -100%;
     }
   }
 
@@ -118,7 +154,7 @@ button {
 
   @keyframes flippedSlide {
     from {
-      margin-left: -20%;
+      margin-left: -100%;
     }
     to {
       margin-left: 100%;

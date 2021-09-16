@@ -3,9 +3,8 @@ import Image from 'next/image';
 const SmallSprites = ({ className, open, size, flipped }) => {
   return (
     <div
-      className={`fixed ${
-        className ? className : ''
-      } left-0 w-screen h-screen z-10 `}
+      className={`fixed ${className ? className : ''} left-0 w-screen z-10 `}
+      style={{ height: '-webkit-fill-available', height: '100vh' }}
     >
       <div
         className={`${

@@ -5,7 +5,7 @@ const SmallSprites = ({ className, open, size, flipped }) => {
     <div
       className={`fixed ${
         className ? className : ''
-      } left-0 w-screen h-screen z-20 `}
+      } left-0 w-screen h-screen z-10 `}
     >
       <div
         className={`${

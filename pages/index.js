@@ -39,7 +39,7 @@ const Home = () => {
     }, 1000);
     setTimeout(() => {
       setShow5(true);
-    }, 1800);
+    }, 2800);
   }, []);
 
   const Button = () => (
@@ -66,8 +66,8 @@ const Home = () => {
           <Image
             draggable={false}
             className="rounded-md"
-            src="/jon3.gif"
-            alt="Jon"
+            src="/sinchan.gif"
+            alt="sinchan"
             height={!open ? 0 : 494}
             width={658}
             layout="responsive"

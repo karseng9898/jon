@@ -14,7 +14,7 @@ const SmallSprites = ({ className, open, size, flipped }) => {
         <Image
           draggable={false}
           className=" opacity-50"
-          src={flipped ? '/jon4.gif' : '/jon3.gif'}
+          src={flipped ? '/sinchan.gif' : '/sinchan.gif'}
           alt="jon"
           height={!open ? 0 : 494}
           width={658}
